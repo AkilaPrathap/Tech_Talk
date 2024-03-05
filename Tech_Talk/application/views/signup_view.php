@@ -208,7 +208,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
         </div>
     </form>
-    <div class="text-center">Already have an account? <a href="<?php echo base_url('User/login'); ?>">Sign in</a></div>
+    <div class="text-center">Already have an account? 
+        <?php echo anchor('User/login', 'Sign in'); ?>
+    </div>
 </div>
 </body>
 </html>
