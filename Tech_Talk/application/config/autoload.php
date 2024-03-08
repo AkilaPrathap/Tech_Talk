@@ -144,3 +144,7 @@ $autoload['helper'] = array('url');
 $autoload['libraries'] = array('database');
 
 $autoload['libraries'] = array('session');
+
+$autoload['helper'] = array('url');
+
+
