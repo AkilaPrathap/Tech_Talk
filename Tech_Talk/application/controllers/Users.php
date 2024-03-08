@@ -3,7 +3,8 @@
 		public function __construct() {
 			parent::__construct();
 			$this->load->library('form_validation');
-			$this->load->model('user_model');
+			  $this->load->model('user_model');
+			
 		}
 		// Register user
 		public function register(){
@@ -21,9 +22,9 @@
 				$this->load->view('templates/footer');
 			} else {
 				// Encrypt password
-				$enc_password = md5($this->input->post('password'));
+				$password = $this->input->post('password');
 
-				$this->user_model->register($enc_password);
+				$this->user_model->register($password);
 
 				// Set message
 				$this->session->set_flashdata('user_registered', 'You are now registered and can log in');
@@ -34,47 +35,40 @@
 
 		// Log in user
 		public function login(){
-			$data['title'] = 'Sign In';
-
+			// Set form validation rules
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
-
+		
 			if($this->form_validation->run() === FALSE){
+				// Load views with form errors
 				$this->load->view('templates/header');
-				$this->load->view('users/login', $data);
+				$this->load->view('users/login');
 				$this->load->view('templates/footer');
 			} else {
-				
-				// Get username
-				$username = $this->input->post('username');
-				// Get and encrypt the password
-				$password = md5($this->input->post('password'));
-
-				// Login user
-				$user_id = $this->user_model->login($username, $password);
-
+				// Attempt to log in the user
+				$user_id = $this->user_model->login();
+		
 				if($user_id){
-					// Create session
+					// Create session data if login is successful
 					$user_data = array(
 						'user_id' => $user_id,
-						'username' => $username,
-						'logged_in' => true
+						'username' => $this->input->post('username'),
+						'logged_in' => TRUE
 					);
-
+		
 					$this->session->set_userdata($user_data);
-
-					// Set message
+		
+					// Set success message and redirect
 					$this->session->set_flashdata('user_loggedin', 'You are now logged in');
-
 					redirect('posts');
 				} else {
-					// Set message
+					// Set error message and redirect if login failed
 					$this->session->set_flashdata('login_failed', 'Login is invalid');
-
 					redirect('users/login');
-				}		
+				}       
 			}
 		}
+		
 
 		// Log user out
 		public function logout(){

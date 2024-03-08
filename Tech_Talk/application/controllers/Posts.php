@@ -4,6 +4,7 @@
 			parent::__construct();
 			$this->load->library('pagination');
 			$this->load->model('post_model');
+			$this->load->library('session');
 		}
 		
 		public function index($offset = 0){	
