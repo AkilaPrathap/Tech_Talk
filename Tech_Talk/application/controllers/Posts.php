@@ -1,5 +1,11 @@
 <?php
 	class Posts extends CI_Controller{
+		public function __construct() {
+			parent::__construct();
+			$this->load->library('pagination');
+			$this->load->model('post_model');
+		}
+		
 		public function index($offset = 0){	
 			// Pagination Config	
 			$config['base_url'] = base_url() . 'posts/index/';
@@ -50,9 +56,9 @@
 			$this->form_validation->set_rules('body', 'Body', 'required');
 
 			if($this->form_validation->run() === FALSE){
-				// $this->load->view('templates/header');
+				$this->load->view('templates/header');
 				$this->load->view('posts/create', $data);
-				// $this->load->view('templates/footer');
+				$this->load->view('templates/footer');
 			} else {
 				// Upload Image
 				$config['upload_path'] = './assets/images/posts';
