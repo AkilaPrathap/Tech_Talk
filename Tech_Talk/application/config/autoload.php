@@ -139,8 +139,8 @@ $autoload['language'] = array();
 
 $autoload['model'] = array();
 
+$autoload['model'] = array();
+
 $autoload['helper'] = array('url');
 
 $autoload['libraries'] = array('form_validation', 'session', 'database');
-
-
