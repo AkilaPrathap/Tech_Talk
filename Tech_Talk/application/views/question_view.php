@@ -29,9 +29,9 @@ if(isset($enable_delete_question) && $enable_delete_question == true){
 <div id="category">
 <?php echo "<b>Category:</b> " . htmlspecialchars($question[0]["category"]); ?>
 </div>
-<!-- <div id="tags">
+ <div id="tags">
 <?php echo "<b>Tags:</b> " . htmlspecialchars($question[0]["tags"]); ?>
-</div> -->
+</div> 
 </div>
 </div>
 <div class="user_info">
@@ -95,7 +95,7 @@ if(isset($answers)){
 			<div class="posted_by">
 			<p>Posted by:</p>
 				<?php
-					echo "<a class=\"usernames\" href=\"https://localhost/CW/Tech_Talk/	index.php/profile/view/" . $answer['user_id'] . "\">" . "<p><b>" . htmlspecialchars($answer["username"]) . "</b></p></a>";
+					echo "<a class=\"usernames\" href=\"https://localhost/CW/Tech_Talk/index.php/profile/view/" . $answer['user_id'] . "\">" . "<p><b>" . htmlspecialchars($answer["username"]) . "</b></p></a>";
 				?>
 			</div>
 			<img class="picture" src="<?php echo $answer["image_path"]; ?>"/>

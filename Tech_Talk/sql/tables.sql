@@ -4,7 +4,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,	
   `password` char(192) NOT NULL,
   `registration_date` DATETIME NOT NULL,
-  `image_path` varchar(255) DEFAULT 'https://w1416464.users.ecs.westminster.ac.uk/CI_1/application/images/default.jpg',
+  `image_path` varchar(255) DEFAULT 'application/images/default.jpg',
   `user_type` ENUM('N','M') DEFAULT 'N',
   `number_of_questions` int NOT NULL DEFAULT 0,
   `number_of_answers` int NOT NULL DEFAULT 0,

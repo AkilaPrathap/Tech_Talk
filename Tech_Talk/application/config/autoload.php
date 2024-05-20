@@ -139,7 +139,7 @@ $autoload['language'] = array();
 
 $autoload['model'] = array();
 
-$autoload['model'] = array();
+$autoload['model'] = array('sessions_model','user_details_model');
 
 $autoload['helper'] = array('url');
 

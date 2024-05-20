@@ -40,7 +40,7 @@ class User_details_model extends CI_Model {
 		$values["email"] = $user_details["email"];
 		$values["password"] = $this->get_hashed_password($user_details["password"]);
 		$values["registration_date"] = date("Y-m-d: H:i:s");
-		$values["image_path"] = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3D%2522user%2Bicon%2522&psig=AOvVaw1-Rn8tzEHF1CJAvQfAE-HV&ust=1714223170848000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPit7Yv534UDFQAAAAAdAAAAABAE";
+		$values["image_path"] = "application/images/default.jpg";
 		$values["user_type"] = "N";
 		$values["number_of_questions"] = 0;
 		$values["number_of_answers"] = 0;
@@ -76,29 +76,28 @@ class User_details_model extends CI_Model {
 	* The password string(which contains the hidden salt and the hashed password) from the database for that username is retrieved
 	* The salt is reconstructed
 	**********************************/
-	public function check_user($username, $password){
-		$this->db->select("password");
+	public function check_user($username, $password) {
+		$this->db->select("user_id, password");
 		$this->db->from("users");
 		$this->db->where("username", $username);
 		$query = $this->db->get();
-		
-		//$pass = $query->row()->password;
-		//$salt = substr($pass,0,32) . substr($pass,160,32);
-		
-		$this->db->select("user_id");
-		$this->db->from("users");
-		$this->db->where("username", $username);
-		//$this->db->where("password", substr($pass,0,32) . hash("sha512", $password . $salt) . substr($pass,160,32));
-		$this->db->where("password", $password);
-		$query = $this->db->get();
-		
-		if($query->num_rows == 1){
-			return $query->row()->user_id;
-		}
-		else{
+	
+		if ($query->num_rows() == 1) {
+			$stored_password = $query->row()->password;
+			if ($password === $stored_password) {
+				// Password is correct
+				return $query->row()->user_id;
+				
+			} else {
+				// Password is incorrect
+				return false;
+			}
+		} else {
+			// Username is incorrect or does not exist
 			return false;
 		}
 	}
+	
 	
 	/*****************************
 	* Function which updates the question count
@@ -199,6 +198,7 @@ class User_details_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->row()->username;
 	}
+
 	
 	/*************************
 	* Function that retrieves all user details, except user type,

@@ -1,15 +1,11 @@
-<?php
-header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
-header('Pragma: no-cache'); // HTTP 1.0.
-header('Expires: 0'); // Proxies
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title><?php echo $title; ?></title>
-<link rel="stylesheet" href="C:\xampp\htdocs\CW\Tech_Talk\css\main.css">
-<script src="C:\xampp\htdocs\CW\Tech_Talk\js\jquery-2.1.3.min.js"></script>
-<script src="C:\xampp\htdocs\CW\Tech_Talk\js\main.js"></script>
+<link rel="stylesheet" href="<?= base_url() ?>css/main.css" />
+<script src="<?= base_url() ?>js/jquery-2.1.3.min.js"></script>
+<script src="<?= base_url() ?>js/main.js"></script>
+
 </head>
 <body>
 <div id="wrapper">

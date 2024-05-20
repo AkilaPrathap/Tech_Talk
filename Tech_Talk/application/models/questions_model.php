@@ -63,7 +63,7 @@ class Questions_model extends CI_Model {
 			}
 		}
 		
-		//$temp[0]["tags"] = implode(", ", $tags);
+		$temp[0]["tags"] = implode(", ", $tags);
 		
 		return $temp;
 	}

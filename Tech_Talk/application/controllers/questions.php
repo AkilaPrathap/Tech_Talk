@@ -9,11 +9,12 @@ class Questions extends CI_Controller {
 		$this->load->model('questions_model');
 		$this->load->model("answers_model");
 		$this->load->model("user_details_model");
+		$this->load->library('session');
 	}
 	
 	public function index(){
 		
-		$data = $this->sessions_model->get_user_data();
+		//$data = $this->sessions_model->get_user_data();
 		
 		$data["title"] = "No question selected";
 		$data["error"] = "No question selected.";
@@ -125,7 +126,7 @@ class Questions extends CI_Controller {
 								<div class="user_info">
 								<div class="posted_by">
 								<p>Posted by:</p>';
-						$html .= "<a class=\"usernames\" href=\"https://w1416464.users.ecs.westminster.ac.uk/CI_1/index.php/profile/view/" . $answer["user_id"] . "\">";
+						$html .= "<a class=\"usernames\" href=\"https://localhost/CW/Tech_Talk/index.php/profile/view/" . $answer["user_id"] . "\">";
 						$html .= "<p><b>" . htmlspecialchars($answer["username"]) . "</b></p></a>";
 						$html .= '</div>
 								<img class="picture" src="' . $answer["image_path"] . '"/>
@@ -157,9 +158,14 @@ class Questions extends CI_Controller {
 	/**********************************
 	* Function which is responsible for posting a question
 	***********************************/
+	
 	public function post_question(){
 		
-		if($this->sessions_model->is_logged_in()){
+		
+		 if($this->sessions_model->is_logged_in()){
+			//if ($this->session->userdata('user_id')) {
+			
+			
 			
 			if($this->input->post("submit")){
 				
@@ -238,10 +244,12 @@ class Questions extends CI_Controller {
 		}
 		else{
 			
-			redirect("/login");
+			redirect("questions/validateqlog");
 			exit();
 		}
 	}
+
+	
 	/*******************************************
 	* Callback function (see tags validation rule above) that checks to make sure that the tags for the question
 	* do not contain illegal characters

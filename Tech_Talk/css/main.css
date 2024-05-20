@@ -4,12 +4,12 @@
 	border: 0;
 }
 body{
-	background-color:#aeee9e;
+	background-color:#6dafec;
 }
 #wrapper {
 	text-align:center;
 	font-family:Arial;
-	color:black;
+	color:b7b9bc;
 	
 }
 #content{
@@ -23,7 +23,7 @@ body{
 	overflow:auto;
 }
 #header {
-	background-color:black;
+	background-color:#000000;
 	height:40px;
 	width:100%;
 	min-width:1000px;
@@ -201,7 +201,7 @@ input[type=submit]{
 }
 .picture{
 	margin:10px auto;
-	border:1px solid black;
+	border:1px solid #b7b9bc;
 	padding:0px;
 	height:90px;
 	width:90px;
