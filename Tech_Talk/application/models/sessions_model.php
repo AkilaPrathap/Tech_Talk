@@ -14,21 +14,20 @@ class Sessions_model extends CI_Model {
 	
 	
 	public function is_logged_in(){
-		//$val =$this->session->userdata("logged_in");
-		$val = true;
-		return $val;
+		$val =$this->session->userdata("logged_in");
+	  return $val;
 	}
 	
 	public function get_username(){
 	
 		return $this->session->userdata("username");
-		return "akila";
+	
 	}
 	
 	public function get_user_id(){
 
-		//return $this->session->userdata("user_id");
-		return 1;
+		return $this->session->userdata("user_id");
+
 	}
 	
 	public function get_user_data(){
