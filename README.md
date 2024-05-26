@@ -4,7 +4,7 @@ Certainly! Here's a concise paragraph that describes the features of the system 
 
 ---
 
-# Question and Answer Platform Features and Techonologies
+# Tech_Talk Question and Answer Platform Features and Techonologies
 
 
 1. **Question Creation:**
