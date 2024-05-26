@@ -3,6 +3,7 @@ A technical question and answer website, where people can pose questions on tech
 Certainly! Here's a concise paragraph that describes the features of the system you've outlined:
 
 ---
+---
 
 # Tech_Talk Question and Answer Platform Features and Techonologies
 
@@ -37,7 +38,8 @@ Certainly! Here's a concise paragraph that describes the features of the system 
    - Basic profiles allow users to view their ratings.
    - Users can update personal details like email and password.
 
-
+---
+---
 # SQL
 
 included
